@@ -100,6 +100,25 @@ async def duck(ctx):
     '''Setiap kali permintaan duck (bebek) dipanggil, program memanggil fungsi get_duck_image_url'''
     image_url = get_duck_image_url()
     await ctx.send(image_url)
+@bot.command()
+async def tulis(ctx, *, my_string: str):
+    with open('kalimat.txt', 'w', encoding='utf-8') as t:
+        text = ""
+        text += my_string
+        t.write(text)
+
+@bot.command()
+async def tambahkan(ctx, *, my_string: str):
+    with open('kalimat.txt', 'a', encoding='utf-8') as t:
+        text = "\n"
+        text += my_string
+        t.write(text)
+
+@bot.command()
+async def baca(ctx):
+    with open('kalimat.txt', 'r', encoding='utf-8') as t:
+        document = t.read()
+        await ctx.send(document)
 
 # welcome message
 @bot.command()
